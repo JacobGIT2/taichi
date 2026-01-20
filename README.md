@@ -3,3 +3,4 @@ simulate 4 kinds of muscle cube movement
 - cosmus -> 3, orange
 - soft -> 1, blue
 - bone -> 0, red
+- 4 is empty
