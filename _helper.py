@@ -30,9 +30,16 @@ def generate_random_robot_numpy(N):
     return map_data
 
 def random_reset_simulation(robot):
-        print(">>> Resetting simulation...")
-        new_map = generate_random_robot_numpy(robot.n)
-        robot.set_map(new_map) 
-        robot.initialize_data()
-        robot.build_springs()
-        return 0.0
+    print(">>> Randomly resetting simulation...")
+    new_map = generate_random_robot_numpy(robot.n)
+    robot.set_map(new_map) 
+    robot.initialize_data()
+    robot.build_springs()
+    return 0.0
+
+def reset_simulation(robot, new_map):
+    print(">>> Resetting simulation...")
+    robot.set_map(new_map) 
+    robot.initialize_data()
+    robot.build_springs()
+    return 0.0
