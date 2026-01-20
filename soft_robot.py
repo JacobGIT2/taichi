@@ -7,7 +7,7 @@ import taichi as ti
 import taichi.math as tm
 
 from Ground import Ground
-from _helper import generate_random_robot_numpy
+from _helper import random_reset_simulation
 
 ti.init(arch=ti.cuda)
 
@@ -323,24 +323,16 @@ def main():
     camera = ti.ui.Camera()
     camera.position(2.0, 2.0, 2.0)
     camera.lookat(0.0, 0.2, 0.0)
-    
-    def reset_simulation():
-        print(">>> Resetting simulation...")
-        new_map = generate_random_robot_numpy(N)
-        robot.set_map(new_map) 
-        robot.initialize_data()
-        robot.build_springs()
-        return 0.0 
 
-    sim_time = reset_simulation()
+    sim_time = random_reset_simulation(robot)
 
     while window.running:
         # if sim_time > 7.0:
-        #     sim_time = reset_simulation()
+        #     sim_time = random_reset_simulation(robot)
 
         if window.get_event(ti.ui.PRESS):
             if window.event.key == 'r':
-                sim_time = reset_simulation()
+                sim_time = random_reset_simulation(robot)
         
         # update
         for _ in range(SUBSTEPS):
